@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:better_player/better_player.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,6 +51,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  var betterPlayerConfiguration = const BetterPlayerConfiguration();
+  late BetterPlayerController controller;
+
+
+  _MyHomePageState() {
+    controller = BetterPlayerController(betterPlayerConfiguration);
+  }
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -95,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            BetterPlayer(controller: controller),
             const Text(
               'You have pushed the button this many times:',
             ),
